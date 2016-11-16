@@ -1,0 +1,6 @@
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.operatoreolistico\.eu$
+RewriteRule ^/?$ "http\:\/\/demooperatoreolistico\.opadapo\.xyz\/" [R=302,L]
+
