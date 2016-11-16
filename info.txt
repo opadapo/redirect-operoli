@@ -1,0 +1,221 @@
+Redirects Using Scripting for SEOs
+Definitions
+
+301 Redirect
+     
+    A function of a web server that redirects the visitor from the current page or site to another page or site, while returning a response code that says that the original page or site has been permanently moved to the new location. Search engines like this information and will readily transfer link popularity (and PageRank) to the new site quickly and with few issues. They are also not as likely to cause issues with duplication filters. SEOs like 301 redirects, and they are usually the preferred way to deal with multiple domains pointing at one website.
+
+302 Redirect
+     
+    A function of a web server that redirects the visitor from the current page or site to another page or site, while returning a response code that says that the original page or site has been temporarily moved to the new location. Search engines will often interpret these as a park, and take their time figuring out how to handle the setup. Try to avoid a 302 redirect on your site if you can (unless it truly is only a temporary redirect), and never use them as some form of click tracking for your outgoing links, as they can result in a "website hijacking" under some circumstances.
+
+MetaTags
+
+    HTML tags that are written into the head section of an HTML page and convey different kinds of information, but don't actually show on the page as text. For example the title, description and keywords for the page. The metatag that matters for this document is the meta-refresh tag. McAnerin Networks offers a free metatag generator here.
+
+Client Side Script (jump down)
+
+    A client side script is a program that is processed on the client (usually a web browser), after the information is sent to the user. Unlike many modern web browsers, search engine spiders do not run client side scripts - therefore they cannot be used to affect search engines except by omission (i.e. scripts that deliberately "leave the spider behind" by counting on the fact that browsers usually do execute the scripts). An example of a client side script: Java Script
+
+Server Side Script (jump down)
+
+    A server side script is a program that is processed on the server, before the information ever reaches the viewer's computer. Compared to a client side script, which is processed on the client's computer. Examples of languages commonly used as server side scripts: PHP, JSP, ASP, ASP.NET, PERL and Cold Fusion.
+
+PHP
+
+    The PHP Hypertext Preprocessor (PHP) is an open source server side programming language extensively used for web scripts and to process data passed via the CGI. PHP can be written as scripts that reside on the server and may produce HTML output that downloads to the web browser. Alternatively, PHP can be embedded within HTML pages that are then saved with a .php file extension. The PHP sections of the page are then parsed by the PHP engine on the server and the PHP code stripped out before the page is downloaded to the web browser. More PHP Information.
+
+Perl
+
+    Practical Extraction and Reporting Language (PERL) is an open source server side programming language extensively used for web scripts and to process data passed via the CGI. Perl scripts are not embedded within HTML pages and do not download to the web browser but reside on the server. They execute by being triggered from commands within HTML pages or other scripts and may produce HTML output that does download to the web browser. More Perl Information
+
+JSP
+
+    Java Server Page (JSP) is a technology for controlling the content or appearance of Web pages through the use of a java servlet, small programs that are specified in the Web page and run on the Web server to modify the Web page before it is sent to the user who requested it. Sun Microsystems, the developer of Java, also refers to the JSP technology as the Servlet application program interface (API). JSP is comparable to Microsoft's Active Server Page (ASP ) technology. More JSP Information
+ 
+ASP
+
+    Active Server Pages. A specification that enables Web pages to be dynamically created using HTML, scripts, and reusable ActiveX server components. VBScript and JScript are the most common scripting languages used for ASP. 
+ 
+ASP.NET
+
+    A set of web development technologies marketed by Microsoft. Programmers can use it to build dynamic web sites, web applications and XML web services. It is part of Microsoft's .NET platform and is the successor to Microsoft's Active Server Pages (ASP) technology. Although you can use VBScript and JScript with ASP.NET, the standard is C#
+ 
+ColdFusion
+
+    ColdFusion is a tag-based, middleware programming language used chiefly for writing web-based applications. The language was created by JJ Allaire and his brother Jeremy Allaire, but the product is currently owned by Macromedia (to be soon acquired by Adobe). More Information on ColdFusion.
+ 
+JavaScript
+
+    JavaScript is a script language - a system of programming codes, created by Netscape, that can be embedded into the HTML of a web page to add functionality. JavaScript should not be confused with the Java programming language. More Information on Javascript.
+     
+ 
+C# ("C Sharp")
+
+    An object-oriented programming language developed by Microsoft as part of their .NET initiative. Microsoft based C# on C++ and Java. C# was designed as a language that would provide a balance of C++ with rapid development, Visual Basic, Delphi, and Java. More Information about C#
+ 
+
+Detailed Information
+Overview
+
+The problem with using scripts for redirection is that search engines don't execute them. This means that in order for them to work they need to be executed on the server the when the page is called but before the search engine receives it. There is only one exception to this and I'll get into it in a moment.
+
+In general, since the execution of the script and the redirection happens before the page goes to the spider, you can use any scripting language you want, as long as the server executes it and the language itself is capable of redirecting and responding with a status code like 301 or 302.
+
+In general, a redirect that does not specify a 301 is treated as a 302, so in order to do a proper 301, you need to be able to specify the status code in the language of your choice. There are exceptions to this, but that's the general behavior.
+301 Redirect Script Code Examples
+Client Side Redirects
+
+There are two common types of client side redirects - meta-refresh and JavaScript, and only meta-refresh actually works to redirect a search engine. However, as you are about to see, it doesn't do a very good job. In general, client side redirects are a bad idea and should be avoided if possible.
+Meta Refresh Redirect (Not The Best Choice)
+
+Let's start with a bad example. It's also a very, very common example, so you need to know about it. There is an HTML tag called the meta refresh that can do redirects that search engines can detect and react to. This is the one exception to the idea that client side scripts and tags don't affect search engines. They usually look at this one.
+
+The question is, after they look at it, how do they handle it? This is a very important issue. For one thing, webmasters have been using this for years in good faith, and if a search engine fails to understand it then the result would be a lot of very good sites not being handled properly.
+
+So a search engine needs to deal with it. Most search engines assume that a refresh that's faster than the time it would take the average page to load fully is intended act like a server redirect, whereas if the refresh is set high enough for the user to see it and update their bookmarks, that the intent was to have the user fix their bookmarks, not for the server to fix it for them. At this point the refresh is more of a courtesy than an instruction. Therefore search engines typically only worry about fast refreshes.
+
+Now, they appear to treat a fast meta refresh as a 302, and life is much better for everyone involved. I'm not aware of any official statements on how they handle meta refresh, so this information comes from word-of-mouth and testing. Since it's handled as a 302, it's not the preferred type of redirect for SEO purposes.
+
+Yahoo, to their immense credit, has actually outlined how they handle this. If a meta redirect is set to 0 seconds, then it will be treated as a 301 redirect. If it is greater than 1 second, it's treated as a 302 redirect. Frankly, I consider this to be an excellent way to handle it.
+
+MSN Search says "Adding a meta redirect tag to your page header does not remove your original page from the MSN Search index; however, it will redirect visitors to your new site. " I read this to mean that they treat it as a 302 redirect. Since a 302 is considered temporary, the original page is kept in the index.
+
+ASK apparently treats a meta-refresh of 0 as a 302, where it retrieves the target page in place of the source page, but keeps the source page reference until it figures out what is going on.
+
+So basically, all 4 major search engines handle the meta-refresh differently - I strongly recommend NOT using it if you have any choice. If you have to, you are best assuming that a meta-refresh of 0 will work most consistently, and will probably be treated as a 302 by everyone except Yahoo, who will treat is as a 301.
+
+This goes against the "conventional wisdom" that a meta-refresh will result in a ban or penalty. Not true. It will result in a 302 - which may look like a penalty under some circumstances. 302's can be bad news since the target content is treated as belonging to the source page, which can result in hijacks, duplication issues, and numerous other problems.
+
+I don't recommend it, but it can work as a method of last resort. Caveat Emptor.
+Meta Refresh Example (Not The Best Choice)
+
+<META HTTP-EQUIV=Refresh CONTENT="0; URL=http://www.newdomain.com">
+JavaScript Redirect (Not Recommended At All)
+
+JavaScript is the second type of common client side redirect. Unlike the meta-refresh tag, a search engine will ignore a JavaScript redirect and stay on the page.
+
+Some people have decided that they could use this behavior to spam the search engines, by stuffing keywords on a page and then using a fast JavaScript redirect to move people on to the next page while allowing the spider to stay and index the spam page.
+
+Google figured out how to detect this tactic in the summer of 2004 and as a result a LOT of websites lost rankings, resulting in at least one infamous SEO firm getting a class action lawsuit started against them, as well as making them look really bad.
+
+In short, JavaScript redirects do not work for search engines, and using them can possibly get you banned from a search engine, depending on the circumstances.
+
+Never use a JavaScript redirect on a page or domain you want to rank with search engines.
+
+The only reason I included them on this page is to serve as a warning. There are some times you could use them on pages that are not search engine accessible, such as certain shopping cart systems and so forth, but in general, you are best off avoiding them.
+Javascript Redirect Example (Not Recommended)
+
+<script type="text/javascript">
+<!--
+window.location = "http://www.newdomain.com/"
+//-->
+</script>
+
+or
+
+<body onLoad="setTimeout(location.href='http://xxx', '0')" >
+
+I cannot stress enough that this method is NOT recommended.
+
+It has the net effect of showing humans and search engines 2 different things - not a good start to long term results. Basically, it's risky.
+Server-Side Redirects
+
+Servers do not automatically go though every webpage they serve out and look for scripts to run. They only look inside files that they know may have server side scripting in them. This saves overhead for the server, and is more efficient. Traditionally, files ending in .htm and .html are considered static and therefore most servers will not attempt to execute them. You can force them to be recognized as dynamic, but in general this is not done.
+
+When a dynamic page is called from a server, the server looks in the page first, before sending it to the user. It will then execute all the scripts it recognises as scripts it should execute, then sends the results to the user. This means that a dynamic page can look very different on the server than it does when it finally reaches the user. It's common for certain CMS systems to only have one page in them, and that page's content is controlled by the variables sent to it. This is one of the reasons why search engines will distrust pages with a lot of variables.
+
+In order to execute a server side script, the server must be set to process the page type it's on, and the script must be present on the page (usually in the header or at the very top of the page)
+PHP 301 Redirect Example
+
+header("HTTP/1.1 301 Moved Permanently");
+header("Location: http://www.newdomain.com/newdir/newpage.htm");
+exit();
+ASP 301 Redirect Example (VBScript)
+ 
+
+<%@ Language=VBScript %>
+<%
+Response.Status="301 Moved Permanently"
+Response.AddHeader "Location", "http://www.newdomain.com/newdir/newpage.asp"
+response.end
+%>
+ASP 301 Redirect Example (JScript)
+
+function PermanentRedirect(strDestinationUri) {
+Response.Clear();
+Response.Status = 301;
+Response.AddHeader("Location", strDestinationUri);
+Response.Flush();
+Response.End();
+}
+
+Note:
+
+“strDestinationUri” should be an absolute URI for maximum client compatibility. The function assumes that “Response.Buffer = true;” has been set at some point prior to invoking the function and will error if hasn't (this is the default configuration for IIS5 and above).
+ASP .NET 301 Redirect Example  (C#)
+
+<script runat="server">
+private void Page_Load(object sender, System.EventArgs e)
+{
+Response.Status = "301 Moved Permanently";
+Response.AddHeader("Location","http://www.new-url.com/");
+}
+</script>
+Cold Fusion 301 Redirect Example (CFM)
+
+Simply add this code to your ColdFusion page:
+
+<.cfheader statuscode="301" statustext="Moved permanently">
+<.cfheader name="Location" value="http://www.new-url.com/">
+JSP / JAVA 301 Redirect Example
+
+Simply add this code to your page or script:
+ 
+
+<%
+response.setStatus(301);
+response.setHeader( "Location", "http://www.new-url.com/" );
+response.setHeader( "Connection", "close" );
+%>
+CGI / Perl 301 Redirect Example Code
+
+Perl is different from the above examples because it doesn't go on a page at all. It's actually a script that is called (usually from the cgi-bin). "Pages" typically look like "pages.cgi" and are called as if they were scripts, not web pages.
+
+#! /usr/bin/perl
+use cgi;
+my $q = cgi->new();
+print $q->redirect(
+-location => 'http://www.newsite.com/newpage.cgi',
+-status => 301,
+);
+Processing Static Pages as if they were Dynamic
+
+Sometimes you will want to do redirects on pages that are standard static web pages (ie htm or html). This is especially common when you are trying to switch from an old static system to a newer dynamic one. The problem is that since search engines don't execute scripts, redirection scripts won't work for a search engine in a static page. What to do?
+
+Well, there is a fix. More like a kludge. But it works. What you do is tell the webserver that pages with the extension .htm (and/ or .html) are actually dynamic and should be treated as if they were dynamic pages. This will slightly increase the load on your server (since all .htm pages will be processed before being rendered) but it's very slight and you probably won't notice it.
+
+It would be no different of a load than if you just switched all your pages over to dynamic anyway.
+Processing .html Pages as if they were .php in Apache
+
+You can force all *.htm pages to be parsed by the php interpreter with an .htaccess directive:
+
+AddType application/x-httpd-php .html
+
+Make appropriate adjustments if it's *.htm documents you want processed:
+
+AddType application/x-httpd-php .htm
+Processing .htm Pages as if they were .asp in IIS
+
+In the Internet Services Manager, go to the "Home Directory" tab of your website properties and click the "Configuration" button. On the "App Mappings" tab of that pop-up, you can control how files are processed. You want to set up a new mapping for the HTM extension that looks just like the ASP mapping. You can also do this for HTML files, if you use them.
+
+Some systems are set up differently from mine - just look at whatever the settings are for your ASP pages and duplicate them for HTM pages.
+
+Diagram of how to map .htm files as if they were .asp in IIS
+Conclusion
+
+Scripting redirection can accomplish a lot, and if it's server-side you are usually pretty safe regarding search engines following it. In general, it takes less overhead and is easier to use webserver redirection using either Apache or IIS. However, redirection with scripting is a legitimate technique for people without full control over their server, or who have some very specific scenarios requiring redirection that are not supported by the webserver directly.
+
+ 
+
+Next: Geolocation And Redirects
